@@ -3,7 +3,58 @@
 """
 
 def binary_string_adder(bina,binb):
-    pass
+    #calcoliamo la lista maggiore
+    risultato = []
+    if len(bina) > len(binb):
+        diff = len(bina) - len(binb)
+        binb = [0] * diff + binb
+    else:
+        diff = len(binb) - len(bina)
+        bina = [0] * diff + bina
+
+    #----------------------------
+    carry = 0
+    i = len(bina) - 1
+    while i >= 0:
+        #caso 1  -> 0 + 0
+        if (bina[i] + binb[i] + carry) == 0:
+            risultato.append(0)
+            i -= 1
+
+        #caso 2 -> 1+0 or 0 + 1
+        elif (bina[i] + binb[i] + carry) == 1:
+            risultato.append(1)
+            carry = 0
+            i -= 1 
+
+        #caso 3 -> 1 + 1 = 0 with carry 1
+        elif (bina[i] + binb[i] + carry) == 2:
+            if i == 0:
+                risultato.append(0)
+                carry = 1
+                risultato.append(carry)
+                break
+            else:
+                risultato.append(0)
+                carry = 1
+                i -= 1
+
+        #caso  -> 1 + 1  + 1 = 1 with carry 1
+        elif (bina[i] + binb[i] + carry) == 3:
+            if i == 0:
+                risultato.append(1)
+                carry = 1
+                risultato.append(carry)
+                break
+            else:
+                risultato.append(1)
+                carry = 1
+                i -= 1
+
+
+    risultato.reverse()
+    return(risultato)
+    
 
 
 def complements(binary_number):

@@ -1,34 +1,31 @@
 import math
 
-class BinaryClass:
+class BitClass:
 
-    def __init__(self):
-        self.data = None
-
-    def setData(self, value):
-        self.data = value
+    #costruttore
+    def __init__(self,segno,esponente,mantissa):
+        self._segno = segno
+        self._esponente = esponente
+        self._mantissa = mantissa
     
-    @staticmethod
-    def getData(self):
-        return self.data
-
-    def fromIntToBin(self, integer_data):
-        valueBin = []
-        value = self.data
-        if value == 0:
-            return 0
-        else:
-            while value > 0:
-                valueBin.append(value % 2)
-                value = value // 2
-            valueBin.reverse()
-            return valueBin
+    def __str__(self):
+        return f"{self.segno},{self.esponente},{self.mantissa}"
+    def getSegno(self):
+        return self.segno
+    def getEsponente(self):
+        return self.esponente
+    def getMantissa(self):
+        return self.mantissa
+    def setSegno(self,value):
+        self.segno = value
+    
+        
+        
+        
+    
 
     
     def fromFloatToBin(self, floating_data):
         pass
 
-    def twosComplement(self, data):
 
-if __name__ == "__main__":
-    pass
